@@ -1,0 +1,657 @@
+:root {
+    --primary-bg: #f8f8f8;
+    --primary-text: #333;
+    --secondary-text: #000;
+    --accent-color: #2ecc71;
+    --font-family: 'Roboto Flex', sans-serif;
+    --transition-duration: 0.3s;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilos para la sección de Presentación */
+body {
+    font-family: var(--font-family);
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+/* Hero Section */
+#presentacion {
+    display: flex;
+    flex-direction: column;
+    /* Cambia a columna para mejor alineación */
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+    width: 100%;
+    height: 100vh;
+    /* Ocupa toda la altura del viewport */
+    box-sizing: border-box;
+    /* Asegura que el padding no desborde */
+    margin-bottom: 20px;
+}
+
+#presentacion .contenedor {
+    display: flex;
+    flex-direction: column;
+    /* Cambia a columna en pantallas pequeñas */
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    /* Centra el texto */
+    height: 100%;
+    /* Asegura que el contenedor también ocupe el alto completo */
+}
+
+.perfil-con-estado {
+    position: relative;
+    /* Esto es necesario para posicionar el estado dentro del contenedor */
+    display: inline-block;
+    /* Asegura que el perfil se comporte como un bloque en línea */
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.estado-online {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+@media (max-width: 768px) {
+    .estado-online {
+        width: 30px;
+        /* Reduce el tamaño en pantallas pequeñas */
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .estado-online {
+        width: 20px;
+        /* Reduce aún más el tamaño en pantallas muy pequeñas */
+        height: 20px;
+    }
+}
+
+#presentacion h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#presentacion p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los iconos de tecnologías */
+/* Contenedor principal */
+.tecnologias {
+    width: 100%;
+    overflow: hidden;
+    /* Oculta el desbordamiento */
+    position: relative;
+    padding: 20px 0;
+    /* Espaciado vertical */
+}
+
+/* Estilos del slider */
+.slider {
+    background: transparent;
+    /* Fondo transparente */
+    height: auto;
+    /* Altura automática */
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    /* Ancho completo */
+}
+
+/* Efecto de degradado en los bordes */
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, #f8f8f8 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100px;
+    /* Ancho del degradado */
+    pointer-events: none;
+    /* Asegura que no interfiera con la interacción del usuario */
+    z-index: 1;
+    /* Asegura que el degradado esté por encima del contenido */
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    background: linear-gradient(to left, #f8f8f8 0%, rgba(255, 255, 255, 0) 100%);
+    right: 0;
+    top: 0;
+}
+
+/* Animación del slider */
+/* Velocidad de la animación */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100px * 14));
+        /* Ajusta según el número de iconos */
+    }
+}
+
+/* Pista del slider */
+.slide-track {
+    animation: scroll 20s linear infinite;
+    /* Reemplaza la variable con un valor estático */
+    display: flex;
+    width: calc(100px * 28);
+    /* Ajusta según el número de iconos duplicados */
+}
+
+/* Estilos de cada slide */
+.slide {
+    height: 100px;
+    width: 100px;
+    /* Tamaño de los iconos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos de los iconos */
+.icono {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    object-fit: contain;
+    transition: transform var(--transition-duration) ease;
+}
+
+#presentacion .tecnologias {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px;
+    /* Limita el ancho máximo del contenedor */
+    overflow: hidden;
+    /* Asegura que el contenido desbordado no sea visible */
+    box-sizing: border-box;
+    /* Incluye padding y borde en el ancho total */
+    margin-left: auto;
+    /* Centra el contenedor horizontalmente */
+    margin-right: auto;
+}
+
+#presentacion .iconos-animados {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Mantiene los iconos en una sola fila */
+    gap: 10px;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    #presentacion {
+        padding: 30px 10px;
+        /* Reduce el padding en pantallas pequeñas */
+    }
+
+    #presentacion .contenedor {
+        flex-direction: column;
+        /* Cambia a columna en pantallas pequeñas */
+    }
+
+    #presentacion .perfil-con-estado {
+        margin-right: 0;
+        /* Elimina el margen lateral */
+        margin-bottom: 20px;
+        /* Añade margen inferior */
+    }
+
+    #presentacion h1 {
+        font-size: 1.8rem;
+        /* Reduce el tamaño del texto */
+    }
+
+    #presentacion p {
+        font-size: 0.95em;
+        /* Ajusta el tamaño del texto */
+    }
+
+    #presentacion .foto-perfil {
+        width: 100px;
+        /* Reduce el tamaño de la foto */
+        height: 100px;
+    }
+
+    #presentacion .iconos-animados {
+        justify-content: center;
+        /* Centra los iconos */
+        flex-wrap: wrap;
+        /* Permite que los iconos se ajusten en varias filas */
+        gap: 15px;
+        /* Aumenta el espacio entre iconos */
+    }
+
+    .slider {
+        width: 100%;
+        /* Asegura que el slider ocupe todo el ancho */
+        overflow-x: scroll;
+        /* Permite desplazamiento horizontal */
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .slide-track {
+        animation: none;
+        /* Desactiva la animación en pantallas pequeñas */
+        display: flex;
+        flex-wrap: nowrap;
+        /* Mantiene los iconos en una fila */
+    }
+
+    .slide {
+        width: 80px;
+        /* Reduce el tamaño de los iconos */
+        height: 80px;
+    }
+
+    .icono {
+        width: 40px;
+        /* Ajusta el tamaño de los iconos */
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    #presentacion h1 {
+        font-size: 1.5rem;
+        /* Ajusta aún más el tamaño del texto */
+    }
+
+    #presentacion p {
+        font-size: 0.9em;
+        /* Reduce el tamaño del texto */
+    }
+
+    #presentacion .foto-perfil {
+        width: 80px;
+        /* Reduce aún más el tamaño de la foto */
+        height: 80px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    margin-top: 70px;
+}
+
+/* Contenedor principal del slider */
+.hero-slider {
+    display: inline-flex;
+    overflow: hidden;
+    width: 100%;
+    /* Ajusta el ancho según tu diseño */
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0px, rgb(0, 0, 0) 128px, rgb(0, 0, 0) calc(100% - 128px), rgba(0, 0, 0, 0));
+    flex-wrap: nowrap;
+    align-items: center;
+    /* Asegura que los iconos estén centrados verticalmente */
+
+    min-height: 100px;
+    /* Altura mínima para evitar recortes */
+    padding: 10px 0;
+    /* Espaciado vertical */
+}
+
+/* Lista de elementos del slider */
+.slider-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 1760px;
+    /* Ajusta según el número de iconos */
+    gap: 5px;
+    /* Espacio entre iconos */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Elementos individuales del slider */
+.slider-list li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Estilos de los iconos */
+.icono {
+    width: 50px;
+    /* Tamaño de los iconos */
+    height: 50px;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    /* Asegura que los iconos se ajusten sin recortarse */
+}
+
+.icono:hover {
+    transform: scale(1.2);
+    /* Efecto de escala al pasar el ratón */
+}
+
+/* Animación de scroll infinito */
+.animate-infinite-scroll {
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.changing-text {
+    display: inline-block;
+    position: relative;
+}
+
+.changing-text::after {
+    content: "";
+    /* Cursor */
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    /* Centrar verticalmente */
+    transform: translateY(-50%);
+    /* Ajustar posición vertical */
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Timeline container */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+
+}
+
+/* Black divider line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #000;
+    /* Changed from blue to black */
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-event {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+    opacity: 0;
+    /* For animations */
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-event:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-event:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+/* Event content */
+.timeline-content {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Triangle indicators */
+.timeline-event:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 20px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #f8f9fa;
+}
+
+.timeline-event:nth-child(even) .timeline-content::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #f8f9fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-event {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        text-align: left !important;
+    }
+
+    .timeline-event:nth-child(odd),
+    .timeline-event:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-event:nth-child(odd) .timeline-content::after,
+    .timeline-event:nth-child(even) .timeline-content::after {
+        left: 60px;
+        border-right: 10px solid #f8f9fa;
+        border-left: none;
+    }
+}
+
+/* Scroll Animation */
+.timeline-event.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-content h3 a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+    /* Suaviza la animación */
+}
+
+.timeline-content h3 a:hover {
+    transform: scale(1.1);
+    /* Aumenta el tamaño un 10% */
+}
+
+.scroll-down {
+    width: 50px;
+    /* Ajusta el tamaño */
+    height: 50px;
+    border-radius: 50%;
+    /* Para hacerlo circular */
+    background-color: #f0f0f0;
+    /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    /* Elimina el borde */
+    cursor: pointer;
+    /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease;
+    /* Transición para el fondo */
+}
+
+.scroll-down:hover {
+    background-color: #e0e0e0;
+    /* Cambia el color de fondo al hacer hover */
+}
+
+.scroll-down svg {
+    width: 30px;
+    /* Ajusta el tamaño de la flecha */
+    height: 30px;
+    fill: #333;
+    /* Color de la flecha */
+    transition: fill 0.3s ease;
+    /* Transición para el color */
+}
+
+.scroll-down:hover svg {
+    fill: #3a3b3c;
+    /* Cambia el color de la flecha al hacer hover */
+}
+
+.contact-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.contact-section h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.contact-section a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.contact-section svg {
+    width: 50px;
+    height: 50px;
+}
+
+.linkedin-icon {
+    fill: #333;
+    ;
+    /* Color de LinkedIn */
+}
+
+.github-icon {
+    fill: #333;
+    /* Color de GitHub */
+}
+
+.contact-section a:hover .linkedin-icon {
+    fill: #000;
+    /* Color más oscuro al pasar el ratón */
+}
+
+.contact-section a:hover .github-icon {
+    fill: #000;
+    /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo inicial de los eventos del timeline */
+.timeline-event {
+    opacity: 0;
+    transform: translateY(30px); /* Posición inicial (fuera de vista) */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transición suave */
+}
+
+/* Cuando el evento es visible */
+.timeline-event.show {
+    opacity: 1;
+    transform: translateY(0); /* Posición final (visible) */
+}
+
+/* Cuando el evento se oculta */
+.timeline-event.hide {
+    opacity: 0;
+    transform: translateY(-30px); /* Movimiento hacia arriba al ocultarse */
+}
+
+/* Estilo inicial de la sección de contacto */
+#contact {
+    opacity: 0;
+    transform: translateY(30px); /* Posición inicial (fuera de vista) */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transición suave */
+}
+
+/* Cuando la sección de contacto es visible */
+#contact.show {
+    opacity: 1;
+    transform: translateY(0); /* Posición final (visible) */
+}
+
+/* Cuando la sección de contacto se oculta */
+#contact.hide {
+    opacity: 0;
+    transform: translateY(-30px); /* Movimiento hacia arriba al ocultarse */
+}
